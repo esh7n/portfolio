@@ -1,22 +1,55 @@
+/* Universal box-sizing for consistent layout */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
+    background-color: rgb(232, 192, 192);
     margin: 0;
+    display: flex;
+    /* Added for sticky footer */
+    flex-direction: column;
+    /* Added for sticky footer */
+    min-height: 100vh;
+    /* Added for sticky footer */
+    overflow-y: scroll;
+    /* Force vertical scrollbar */
 }
 
 header {
-    background: #222;
+    background: #192841;
     color: #fff;
-    padding: 1rem 20px;
+    padding: 0.5rem 0;
+    /* Removed horizontal padding */
+    /* Reduced vertical padding to make it thinner */
     display: flex;
     justify-content: space-between;
+    /* Aligns logo to one side and nav to the other */
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* Ensure it stays on top of other content */
 }
 
 header .logo {
     font-size: 1.8rem;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    /* Added left padding for the logo */
+}
+
+.logo img {
+    height: 60px;
+    /* 1.5 times bigger than 40px */
+    /* Adjust as needed */
+    margin-right: 10px;
+    background-color: transparent;
+    /* Assuming lgrm.png has transparency */
 }
 
 .logo a {
@@ -26,6 +59,11 @@ header .logo {
 
 .logo a:hover {
     color: #ffd700;
+}
+
+header nav {
+    padding-right: 20px;
+    /* Added right padding for the navigation */
 }
 
 header nav ul {
@@ -51,13 +89,99 @@ header nav a:hover {
 }
 
 main {
+    flex-grow: 1;
+    /* Allows main content to grow and push footer down */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 120px);
-    /* Adjust based on header/footer height */
+    /* align-items: center; */
+    /* Removed to allow content to fit display width */
+    /* justify-content: center; */
+    /* Removed as content will now stretch */
     padding: 20px;
+}
+
+section {
+    width: 100%;
+    /* Make section width fit the display */
+    /* max-width: 900px; */
+    /* Removed to allow fitting to display size */
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 20px auto;
+    display: block;
+    border: 5px solid #192841;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+section h1 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+section p {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.project-item {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+}
+
+.project-item h3 {
+    color: #333;
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.project-item p {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.project-item .button {
+    display: inline-block;
+    background-color: hsl(208, 59%, 50%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.project-item .button:hover {
+    background-color: hsl(120, 32%, 66%);
 }
 
 .weatherForm {
@@ -74,7 +198,7 @@ main {
     width: 300px;
 }
 
-button[type="submit"] {
+button {
     padding: 10px 20px;
     font-weight: bold;
     font-size: 2rem;
@@ -85,24 +209,8 @@ button[type="submit"] {
     cursor: pointer;
 }
 
-button[type="submit"]:hover {
+button:hover {
     background-color: hsl(208, 59%, 50%);
-}
-
-.button {
-    display: inline-block;
-    background-color: hsl(208, 59%, 50%);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.button:hover {
-    background-color: hsl(120, 32%, 66%);
 }
 
 .card {
@@ -153,15 +261,34 @@ p {
     color: hsla(0, 0, 0, 0.75);
 }
 
+.social-icons {
+    margin-bottom: 15px;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 8px;
+    font-size: 0.5rem;
+    /* Changed to 0.5rem as requested */
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #ffd700;
+}
+
 footer {
     text-align: center;
-    padding: 20px;
-    background: #222;
+    padding: 10px;
+    /* Reduced padding to make the footer smaller */
+    background: #192841;
     color: #fff;
-    margin-top: auto;
-    /* Pushes footer to the bottom */
     width: 100%;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    bottom: 0;
+    z-index: 1000;
+    /* Ensure it stays on top of other content */
 }
 
 footer p {
