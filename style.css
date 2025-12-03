@@ -91,26 +91,96 @@ header nav a:hover {
 main {
     flex-grow: 1;
     /* Allows main content to grow and push footer down */
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    /* Removed to allow content to fit display width */
-    /* justify-content: center; */
-    /* Removed as content will now stretch */
+    /* display: flex; */ /* Removed conflicting flex property */
+    /* flex-direction: column; */ /* Removed conflicting flex property */
+    /* align-items: center; */ /* Removed conflicting flex property */
+    justify-content: flex-start; /* Kept for general vertical alignment */
     padding: 20px;
 }
 
+/* Specific styles for the about page main content */
+main.about-page-main {
+    display: flex; /* Apply flexbox for about page layout */
+    flex-direction: row; /* Apply row direction for about page layout */
+    align-items: flex-start; /* Apply alignment for about page layout */
+}
+
+/* Specific styles for the home page main content */
+main.home-page-main .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center children horizontally */
+    /* text-align: center; */ /* Not needed with flexbox alignment */
+}
+
+main.home-page-main .container section {
+    text-align: center; /* Center text within the section on the home page */
+}
+
+/* Removed section styling as container is removed */
+/*
 section {
     width: 100%;
-    /* Make section width fit the display */
-    /* max-width: 900px; */
-    /* Removed to allow fitting to display size */
     margin: 40px auto;
     padding: 30px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+*/
+
+/* Removed .about-content styling as it's no longer a container */
+/*
+.about-content {
+    flex: 1;
+    padding-right: 20px;
+    text-align: left;
+}
+*/
+
+/* Removed .about-image styling as it's no longer a container */
+/*
+.about-image {
+    flex: 2;
+    text-align: right;
+}
+*/
+
+/* Style for the about page text content */
+.about-text-content {
+    flex: 1; /* Allow text content to take up available space */
+    padding-right: 20px; /* Space between text and image */
+    text-align: left; /* Align text to the left */
+}
+
+.about-img {
+    float: right; /* Position image to the right */
+    margin-left: 20px; /* Space between text and image */
+    max-width: 40%; /* Adjust size of the image */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: none; /* Remove shadow to blend with background */
+    border: none; /* Remove border to blend with background */
+}
+
+/* Ensure h1 and p within main don't inherit unwanted styles and align left */
+.about-title {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.about-description {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: left;
 }
 
 .profile-pic {
@@ -134,6 +204,16 @@ section p {
     color: #666;
     font-size: 1.1rem;
     line-height: 1.6;
+}
+
+main p {
+    margin: 0 0 10px 0; /* Adjust margins for text */
+}
+
+.container {
+    max-width: 1200px; /* Or your preferred max width */
+    margin: 0 auto; /* Center the container */
+    padding: 0 20px; /* Add some horizontal padding */
 }
 
 .project-list {
@@ -263,6 +343,13 @@ p {
 
 .social-icons {
     margin-bottom: 15px;
+}
+
+.footer-slogan {
+    color: #fff;
+    font-size: 1.1rem; /* Increased font size */
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .social-icons a {
