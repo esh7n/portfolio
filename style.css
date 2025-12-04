@@ -193,17 +193,29 @@ main.about-page-main section#about {
     color: #333;
 }
 
-.skills-container {
-    display: flex;
-    justify-content: space-around;
-    /* Changed to space-around for better distribution */
-    flex-wrap: wrap;
-    /* Allow cards to wrap on smaller screens */
-    gap: 20px;
-    /* Space between cards */
-    margin-top: 30px;
+.skills-section {
     width: 100%;
-    /* Ensure container takes full width of its parent */
+    padding: 3rem 0;
+    background: #ffffff;
+}
+
+.skills-section h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.skills-container {
+    max-width: 1200px;
+    /* content width */
+    margin: 0 auto;
+    /* center the inner row */
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    /* center cards horizontally */
+    flex-wrap: wrap;
+    /* wrap on smaller screens */
 }
 
 .skill-card {
@@ -224,30 +236,12 @@ main.about-page-main section#about {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.skill-card i {
-    font-size: 3em;
+.skill-card img.skill-icon {
+    width: 3em;
+    height: 3em;
     /* Icon size */
     margin-bottom: 10px;
-}
-
-.skill-card .fa-python {
-    color: #3776AB;
-    /* Official Python blue */
-}
-
-.skill-card .fa-figma {
-    color: #F24E1E;
-    /* Official Figma orange */
-}
-
-.skill-card .fa-js {
-    color: #F7DF1E;
-    /* Official JavaScript yellow */
-}
-
-.skill-card .fa-adobe-photoshop {
-    color: #31A8FF;
-    /* Official Photoshop blue */
+    object-fit: contain;
 }
 
 .skill-card p {
@@ -468,13 +462,19 @@ p {
 .social-icons a {
     color: #fff;
     margin: 0 8px;
-    font-size: 0.5rem;
-    /* Changed to 0.5rem as requested */
-    transition: color 0.3s ease;
+    transition: opacity 0.3s ease;
+    display: inline-block;
+}
+
+.social-icons a img.social-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    /* Icon size - adjusted for better visibility */
+    object-fit: contain;
 }
 
 .social-icons a:hover {
-    color: #ffd700;
+    opacity: 0.7;
 }
 
 footer {
@@ -485,10 +485,8 @@ footer {
     color: #fff;
     width: 100%;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    bottom: 0;
-    z-index: 1000;
-    /* Ensure it stays on top of other content */
+    margin-top: auto;
+    /* Push footer to bottom when content is short */
 }
 
 footer p {
