@@ -6,7 +6,7 @@
 body {
     font-family: 'Roboto', Arial, sans-serif;
     /* Changed to a more standard and readable font */
-    background-color: rgb(232, 192, 192);
+    background-color: #E3E3E3;
     margin: 0;
     display: flex;
     /* Added for sticky footer */
