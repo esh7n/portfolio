@@ -4,7 +4,8 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
+    /* Changed to a more standard and readable font */
     background-color: rgb(232, 192, 192);
     margin: 0;
     display: flex;
@@ -91,48 +92,69 @@ header nav a:hover {
 main {
     flex-grow: 1;
     /* Allows main content to grow and push footer down */
-    /* display: flex; */ /* Removed conflicting flex property */
-    /* flex-direction: column; */ /* Removed conflicting flex property */
-    /* align-items: center; */ /* Removed conflicting flex property */
-    justify-content: flex-start; /* Kept for general vertical alignment */
+    /* display: flex; */
+    /* Removed conflicting flex property */
+    /* flex-direction: column; */
+    /* Removed conflicting flex property */
+    /* align-items: center; */
+    /* Removed conflicting flex property */
+    justify-content: flex-start;
+    /* Kept for general vertical alignment */
     padding: 20px;
 }
 
 /* Specific styles for the about page main content */
 main.about-page-main {
-    display: flex; /* Apply flexbox for about page layout */
-    flex-direction: row; /* Apply row direction for about page layout */
-    align-items: flex-start; /* Apply alignment for about page layout */
+    display: flex;
+    /* Apply flexbox for about page layout */
+    flex-direction: row;
+    /* Apply row direction for about page layout */
+    align-items: flex-start;
+    /* Apply alignment for about page layout */
+    background-color: #fff;
+    /* Subtle background for elevation */
+    padding: 20px 150px;
+    /* Adjusted padding to 20px top/bottom and 150px left/right */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    /* Soft shadow for elevation */
+    margin: 0;
+    /* Removed auto margin to allow full width */
+    width: 100%;
+    /* Set width to 100% */
+    /* max-width: 1200px; */
+    /* Removed to allow full width */
+    justify-content: space-between;
+    /* Pushes content to edges */
 }
 
 /* Specific styles for the home page main content */
 main.home-page-main .container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center children horizontally */
-    /* text-align: center; */ /* Not needed with flexbox alignment */
+    align-items: center;
+    /* Center children horizontally */
+    /* text-align: center; */
+    /* Not needed with flexbox alignment */
 }
 
 main.home-page-main .container section {
-    text-align: center; /* Center text within the section on the home page */
+    text-align: center;
+    /* Center text within the section on the home page */
 }
 
-/* Removed section styling as container is removed */
-/*
-section {
-    width: 100%;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+/* Specific styling for the about page's section */
+main.about-page-main section#about {
     display: flex;
+    /* Re-apply flexbox for about page layout */
     flex-wrap: wrap;
+    /* Allow items to wrap on smaller screens */
     justify-content: space-around;
+    /* Distribute space between items */
     align-items: center;
+    /* Re-apply for vertical alignment */
 }
-*/
 
 /* Removed .about-content styling as it's no longer a container */
 /*
@@ -153,34 +175,120 @@ section {
 
 /* Style for the about page text content */
 .about-text-content {
-    flex: 1; /* Allow text content to take up available space */
-    padding-right: 20px; /* Space between text and image */
-    text-align: left; /* Align text to the left */
+    flex: 1;
+    /* Increased flex to make the text container wider */
+    padding-right: 20px;
+    /* Space between text and image */
+    text-align: left;
+    /* Align text to the left */
+}
+
+.about-text-content h2 {
+    font-size: 3rem;
+    /* Changed to 3rem as requested */
+    text-align: center;
+    /* Ensure it is centered */
+    padding-top: 50px;
+    padding-left: 250px;
+    color: #333;
+}
+
+.skills-container {
+    display: flex;
+    justify-content: space-around;
+    /* Changed to space-around for better distribution */
+    flex-wrap: wrap;
+    /* Allow cards to wrap on smaller screens */
+    gap: 20px;
+    /* Space between cards */
+    margin-top: 30px;
+    width: 100%;
+    /* Ensure container takes full width of its parent */
+}
+
+.skill-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for pop-up effect */
+    text-align: center;
+    width: 180px;
+    /* Fixed width for each card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    /* Lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.skill-card i {
+    font-size: 3em;
+    /* Icon size */
+    margin-bottom: 10px;
+}
+
+.skill-card .fa-python {
+    color: #3776AB;
+    /* Official Python blue */
+}
+
+.skill-card .fa-figma {
+    color: #F24E1E;
+    /* Official Figma orange */
+}
+
+.skill-card .fa-js {
+    color: #F7DF1E;
+    /* Official JavaScript yellow */
+}
+
+.skill-card .fa-adobe-photoshop {
+    color: #31A8FF;
+    /* Official Photoshop blue */
+}
+
+.skill-card p {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0;
 }
 
 .about-img {
-    float: right; /* Position image to the right */
-    margin-left: 20px; /* Space between text and image */
-    max-width: 40%; /* Adjust size of the image */
+    max-width: 45%;
+    /* Adjusted max-width to balance with text content */
     height: auto;
     border-radius: 8px;
-    box-shadow: none; /* Remove shadow to blend with background */
-    border: none; /* Remove border to blend with background */
+    box-shadow: none;
+    /* Remove shadow to blend with background */
+    border: none;
+    /* Remove border to blend with background */
+    margin-left: 20px;
+    /* Space between text and image */
 }
 
 /* Ensure h1 and p within main don't inherit unwanted styles and align left */
 .about-title {
     color: #333;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    font-size: 2.1rem;
+    /* Made font 1.1rem smaller */
+    margin-bottom: 15px;
     text-align: left;
 }
 
 .about-description {
-    color: #666;
+    color: #444;
+    /* Slightly darker text for better contrast */
     font-size: 1.1rem;
-    line-height: 1.6;
+    /* Made font 1.1rem smaller */
+    line-height: 1.9;
     text-align: left;
+    max-width: 50%;
+    /* Ensure paragraph does not take more than half page width */
+    margin: 0;
+    /* Remove default paragraph margins */
 }
 
 .profile-pic {
@@ -207,13 +315,17 @@ section p {
 }
 
 main p {
-    margin: 0 0 10px 0; /* Adjust margins for text */
+    margin: 0 0 10px 0;
+    /* Adjust margins for text */
 }
 
 .container {
-    max-width: 1200px; /* Or your preferred max width */
-    margin: 0 auto; /* Center the container */
-    padding: 0 20px; /* Add some horizontal padding */
+    max-width: 100%;
+    /* Set max-width to 100% of the page */
+    margin: 0 auto;
+    /* Center the container */
+    padding: 0 20px;
+    /* Add some horizontal padding */
 }
 
 .project-list {
@@ -347,7 +459,8 @@ p {
 
 .footer-slogan {
     color: #fff;
-    font-size: 1.1rem; /* Increased font size */
+    font-size: 1.1rem;
+    /* Increased font size */
     margin-bottom: 10px;
     text-align: center;
 }
