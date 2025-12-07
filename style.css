@@ -300,6 +300,7 @@ section h1 {
     color: #333;
     font-size: 2.5rem;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 section p {
@@ -368,6 +369,31 @@ main p {
 
 .project-item .button:hover {
     background-color: hsl(120, 32%, 66%);
+}
+
+.weather-app-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.weather-app-content {
+    flex: 1;
+}
+
+.weather-app-content p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.weather-app-icon {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 
