@@ -10,6 +10,51 @@
 </head>
 
 <body>
+    <!-- Grid dots pattern background -->
+    <div class="pattern-background">
+        <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <radialGradient id="dotGradient1">
+                    <stop offset="0%" style="stop-color:#ff006e;stop-opacity:0.5" />
+                    <stop offset="50%" style="stop-color:#ffbe0b;stop-opacity:0.4" />
+                    <stop offset="100%" style="stop-color:#fb5607;stop-opacity:0.3" />
+                </radialGradient>
+                <radialGradient id="dotGradient2">
+                    <stop offset="0%" style="stop-color:#3a86ff;stop-opacity:0.5" />
+                    <stop offset="50%" style="stop-color:#8338ec;stop-opacity:0.4" />
+                    <stop offset="100%" style="stop-color:#06ffa5;stop-opacity:0.3" />
+                </radialGradient>
+                <radialGradient id="dotGradient3">
+                    <stop offset="0%" style="stop-color:#06ffa5;stop-opacity:0.5" />
+                    <stop offset="50%" style="stop-color:#3a86ff;stop-opacity:0.4" />
+                    <stop offset="100%" style="stop-color:#ff006e;stop-opacity:0.3" />
+                </radialGradient>
+                <radialGradient id="dotGradient4">
+                    <stop offset="0%" style="stop-color:#ffbe0b;stop-opacity:0.5" />
+                    <stop offset="50%" style="stop-color:#fb5607;stop-opacity:0.4" />
+                    <stop offset="100%" style="stop-color:#8338ec;stop-opacity:0.3" />
+                </radialGradient>
+            </defs>
+            <!-- Grid of dots -->
+            <circle cx="100" cy="100" r="35" fill="url(#dotGradient1)" />
+            <circle cx="300" cy="100" r="35" fill="url(#dotGradient2)" />
+            <circle cx="500" cy="100" r="35" fill="url(#dotGradient3)" />
+            <circle cx="700" cy="100" r="35" fill="url(#dotGradient4)" />
+            <circle cx="100" cy="300" r="35" fill="url(#dotGradient2)" />
+            <circle cx="300" cy="300" r="35" fill="url(#dotGradient3)" />
+            <circle cx="500" cy="300" r="35" fill="url(#dotGradient4)" />
+            <circle cx="700" cy="300" r="35" fill="url(#dotGradient1)" />
+            <circle cx="100" cy="500" r="35" fill="url(#dotGradient3)" />
+            <circle cx="300" cy="500" r="35" fill="url(#dotGradient4)" />
+            <circle cx="500" cy="500" r="35" fill="url(#dotGradient1)" />
+            <circle cx="700" cy="500" r="35" fill="url(#dotGradient2)" />
+            <circle cx="100" cy="700" r="35" fill="url(#dotGradient4)" />
+            <circle cx="300" cy="700" r="35" fill="url(#dotGradient1)" />
+            <circle cx="500" cy="700" r="35" fill="url(#dotGradient2)" />
+            <circle cx="700" cy="700" r="35" fill="url(#dotGradient3)" />
+        </svg>
+    </div>
+
     <header>
         <div class="logo"><a href="index.html"><img src="lgrm.png" alt="Logo"></a></div>
         <nav>
@@ -66,6 +111,33 @@
         </div>
         <p>&copy; 2025 Mohammad Al Johany. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Hide navbar on scroll down, show on scroll up
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        const scrollThreshold = 100; // Minimum scroll distance before hiding
+
+        window.addEventListener('scroll', function () {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Only hide/show if scrolled past threshold
+            if (scrollTop > scrollThreshold) {
+                if (scrollTop > lastScrollTop) {
+                    // Scrolling down - hide navbar
+                    header.classList.add('hidden');
+                } else {
+                    // Scrolling up - show navbar
+                    header.classList.remove('hidden');
+                }
+            } else {
+                // Near top - always show navbar
+                header.classList.remove('hidden');
+            }
+
+            lastScrollTop = scrollTop;
+        });
+    </script>
 </body>
 
 </html>

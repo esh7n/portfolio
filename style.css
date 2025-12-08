@@ -16,6 +16,69 @@ body {
     /* Added for sticky footer */
     overflow-y: scroll;
     /* Force vertical scrollbar */
+    position: relative;
+}
+
+/* Colorful spiral background design */
+.spiral-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+    height: 1200px;
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+    animation: spiralRotate 30s linear infinite;
+    overflow: hidden;
+}
+
+.spiral-background svg {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes spiralRotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Pattern backgrounds for other pages */
+.pattern-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+    height: 1200px;
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.pattern-background svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Different animations for different pages */
+body:has(.pattern-background) .pattern-background {
+    animation: patternFloat 20s ease-in-out infinite;
+}
+
+@keyframes patternFloat {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
 }
 
 header {
@@ -33,6 +96,11 @@ header {
     top: 0;
     z-index: 1000;
     /* Ensure it stays on top of other content */
+    transition: transform 0.3s ease-in-out;
+}
+
+header.hidden {
+    transform: translateY(-100%);
 }
 
 header .logo {
@@ -114,6 +182,8 @@ main {
     justify-content: flex-start;
     /* Kept for general vertical alignment */
     padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 /* Specific styles for the about page main content */

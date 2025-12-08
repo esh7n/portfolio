@@ -10,6 +10,39 @@
 </head>
 
 <body>
+    <!-- Wave pattern background -->
+    <div class="pattern-background">
+        <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#ff006e;stop-opacity:0.4" />
+                    <stop offset="25%" style="stop-color:#ffbe0b;stop-opacity:0.4" />
+                    <stop offset="50%" style="stop-color:#fb5607;stop-opacity:0.4" />
+                    <stop offset="75%" style="stop-color:#ff006e;stop-opacity:0.4" />
+                    <stop offset="100%" style="stop-color:#8338ec;stop-opacity:0.4" />
+                </linearGradient>
+                <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#3a86ff;stop-opacity:0.4" />
+                    <stop offset="25%" style="stop-color:#06ffa5;stop-opacity:0.4" />
+                    <stop offset="50%" style="stop-color:#8338ec;stop-opacity:0.4" />
+                    <stop offset="75%" style="stop-color:#3a86ff;stop-opacity:0.4" />
+                    <stop offset="100%" style="stop-color:#ffbe0b;stop-opacity:0.4" />
+                </linearGradient>
+                <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#06ffa5;stop-opacity:0.4" />
+                    <stop offset="50%" style="stop-color:#3a86ff;stop-opacity:0.4" />
+                    <stop offset="100%" style="stop-color:#ff006e;stop-opacity:0.4" />
+                </linearGradient>
+            </defs>
+            <!-- Wave paths -->
+            <path d="M 0,200 Q 100,150 200,200 T 400,200 T 600,200 T 800,200 L 800,300 L 0,300 Z" fill="url(#waveGradient1)" />
+            <path d="M 0,400 Q 150,350 300,400 T 600,400 T 800,400 L 800,500 L 0,500 Z" fill="url(#waveGradient2)" />
+            <path d="M 0,300 Q 200,250 400,300 T 800,300 L 800,400 L 0,400 Z" fill="url(#waveGradient3)" />
+            <path d="M 0,500 Q 100,450 200,500 T 400,500 T 600,500 T 800,500 L 800,600 L 0,600 Z" fill="url(#waveGradient1)" />
+            <path d="M 0,100 Q 150,50 300,100 T 600,100 T 800,100 L 800,200 L 0,200 Z" fill="url(#waveGradient2)" />
+        </svg>
+    </div>
+    
     <header>
         <div class="logo"><a href="index.html"><img src="lgrm.png" alt="Logo"></a></div>
         <nav>
@@ -43,6 +76,33 @@
         </div>
         <p>&copy; 2025 Mohammad Al Johany. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Hide navbar on scroll down, show on scroll up
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        const scrollThreshold = 100; // Minimum scroll distance before hiding
+
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Only hide/show if scrolled past threshold
+            if (scrollTop > scrollThreshold) {
+                if (scrollTop > lastScrollTop) {
+                    // Scrolling down - hide navbar
+                    header.classList.add('hidden');
+                } else {
+                    // Scrolling up - show navbar
+                    header.classList.remove('hidden');
+                }
+            } else {
+                // Near top - always show navbar
+                header.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    </script>
 </body>
 
 </html>
