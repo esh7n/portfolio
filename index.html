@@ -14,9 +14,9 @@
         <div class="logo"><a href="index.html"><img src="lgrm.png" alt="Logo"></a></div>
         <nav>
             <ul>
-                <li><a href="about.html">About me</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="service.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -28,7 +28,25 @@
                 <img src="lpphoto.jpeg" alt="Profile Picture" class="profile-pic">
                 <p>Hi, I'm Mohammad Al Johany, a passionate Web Designer and Developer.</p>
                 <p>This is my personal portfolio where you can find some of my projects. Feel free to explore!</p>
+                <a href="about.html" class="about-button">About me</a>
             </section>
+
+            <!-- Circular button with text around it -->
+            <div class="circular-button-container">
+                <svg class="circular-text-svg" viewBox="0 0 200 200">
+                    <defs>
+                        <path id="circle-path" d="M 100, 100 m -65, 0 a 65,65 0 1,1 130,0 a 65,65 0 1,1 -130,0" />
+                    </defs>
+                    <text class="circular-text">
+                        <textPath href="#circle-path" startOffset="0%">
+                            UI/UX Designer. Web Developer.
+                        </textPath>
+                    </text>
+                </svg>
+                <a href="contact.html#contact-form" class="circular-button">
+                    Hire Me
+                </a>
+            </div>
         </div>
     </main>
 

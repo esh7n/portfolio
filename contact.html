@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo"><a href="index.html"><img src="lgrm.png" alt="Logo"></a></div>
+        <nav>
+            <ul>
+                <li><a href="about.html">About me</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contact-page-main">
+        <div class="container">
+            <section id="contact">
+                <h1>Get In Touch</h1>
+                <p class="contact-intro">Have a project in mind or want to collaborate? I'd love to hear from you. Fill out the form below and I'll get back to you as soon as possible.</p>
+                
+                <form class="contact-form" id="contact-form" action="https://formsubmit.co/weekquo@gmail.com" method="POST">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="">
+                    <input type="hidden" name="_template" value="box">
+                    
+                    <div id="form-message" class="form-message"></div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button" id="submit-btn">Send Message</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p class="footer-slogan">Elevating your presence, byte by brilliant byte.</p>
+        <div class="social-icons">
+            <a href="https://github.com/esh7n" target="_blank"><img src="social_icon/icons8-github.svg" alt="GitHub"
+                    class="social-icon"></a>
+            <a href="https://t.me/eshan0617" target="_blank"><img src="social_icon/icons8-telegram.svg" alt="Telegram"
+                    class="social-icon"></a>
+            <a href="https://www.linkedin.com/in/mohammad-al-johany-b04849255/" target="_blank"><img
+                    src="social_icon/icons8-linkedin.svg" alt="LinkedIn" class="social-icon"></a>
+            <a href="#" target="_blank"><img src="social_icon/icons8-discord.svg" alt="Discord" class="social-icon"></a>
+            <a href="https://www.facebook.com/eshan.j.2024/" target="_blank"><img src="social_icon/icons8-facebook.svg"
+                    alt="Facebook" class="social-icon"></a>
+            <a href="https://x.com/esh7nn" target="_blank"><img src="social_icon/icons8-x.svg" alt="X"
+                    class="social-icon"></a>
+        </div>
+        <p>&copy; 2025 Mohammad Al Johany. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Handle form submission with user feedback
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            const submitBtn = document.getElementById('submit-btn');
+            const formMessage = document.getElementById('form-message');
+            const originalBtnText = submitBtn.textContent;
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            formMessage.textContent = '';
+            formMessage.className = 'form-message';
+            
+            // Set the redirect URL to show success message
+            const form = this;
+            const hiddenNext = form.querySelector('input[name="_next"]');
+            const currentUrl = window.location.href.split('?')[0];
+            hiddenNext.value = currentUrl + '?success=true';
+            
+            // Format subject to include user's subject line
+            const subjectInput = document.getElementById('subject');
+            const hiddenSubject = document.createElement('input');
+            hiddenSubject.type = 'hidden';
+            hiddenSubject.name = '_subject';
+            hiddenSubject.value = 'Portfolio Contact: ' + subjectInput.value;
+            form.appendChild(hiddenSubject);
+            
+            // Allow form to submit normally to FormSubmit
+            // FormSubmit will handle the email sending and redirect
+        });
+        
+        // Check if form was submitted successfully (from URL parameter)
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                const formMessage = document.getElementById('form-message');
+                formMessage.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+                formMessage.className = 'form-message success';
+                document.getElementById('contact-form').reset();
+                
+                // Clean up URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
+    </script>
+</body>
+
+</html>
+
